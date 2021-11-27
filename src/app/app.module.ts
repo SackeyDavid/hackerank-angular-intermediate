@@ -1,27 +1,31 @@
-import { NgModule } from '@angular/core';
+
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from "ngx-toastr";
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { PaymentDetailsComponent } from './payment-details/payment-details.component';
-import { PaymentDetailFormComponent } from './payment-details/payment-detail-form/payment-detail-form.component';
+
+import { SurveyList } from './surveyList/surveyList.component';
+import { Filters } from './filters/filters.component';
+import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PaymentDetailsComponent,
-    PaymentDetailFormComponent
+    SurveyList,
+    Filters
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    RouterTestingModule,
+    RouterModule.forRoot([
+      { path:'', component: SurveyList }
+    ])
+  ],
+  exports: [
+    RouterModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas : [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
